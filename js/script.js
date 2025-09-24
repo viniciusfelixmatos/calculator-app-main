@@ -34,23 +34,42 @@
 
 // loopOperations();
 
-function addTip() {
-    let tip = document.querySelectorAll(".button__number span");
-    let input = document.querySelector('#inputout');
-    console.log(input)
-    tip.forEach((item) => {
-        item.addEventListener("click", (event) => {
-            console.log(item.innerHTML);
 
-            input.value += item.innerHTML;
-        });
-    });
+
+// Botão de Switch
+const firstTheme = document.getElementById('first-theme');
+const secondTheme = document.getElementById('second-theme');
+const threeTheme = document.getElementById('three-theme');
+
+const switchCircle = document.getElementById('themeCircle')
+
+// Calculadora
+const display = document.getElementById('result');
+var currentInput = '';
+var currentOperator = '';
+var previousInput = '';
+
+firstTheme.addEventListener("click", function() {
+    switchCircle.classList.remove('second-theme', 'three-theme');
+    console.log('clicado 01');
+});
+
+secondTheme.addEventListener("click", function() {
+    switchCircle.classList.add('second-theme');
+    console.log('clicado 02');
+});
+
+threeTheme.addEventListener("click", function() {
+    switchCircle.classList.remove('second-theme');
+    switchCircle.classList.add('three-theme');
+    console.log('clicado 03')
+});
+
+function insert(number) {
+    currentInput += number;
+    display.value = `${currentInput} ${currentOperator} ${previousInput}`;
 }
 
-addTip(); // <-- call addTip() once in the js
 
-function operationSum() {
-    console.log('teste');
-}
 
-document.querySelector('#operationSum').addEventListener('click', operationSum)
+

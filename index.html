@@ -13,20 +13,20 @@
 <body class="theme-1">
   <main class="calculator">
     <!-- Cabeçalho -->
-    <header class="calculator__header d-flex justify-content-between align-items-center px-3 py-2">
+    <header class="calculator__header px-3 py-2">
       <h1 class="calculator__title m-0">calc</h1>
 
-      <div class="theme-switch d-flex align-items-center gap-3 position-relative">
+      <div class="theme-switch gap-3">
         <span class="theme-switch__label">THEME</span>
 
         <!-- área clicável do switch -->
-        <div class="theme-switch__options d-flex justify-content-between position-relative" id="themeSwitch" role="switch" aria-label="Theme switch" tabindex="0">
-          <span class="theme-option" aria-hidden="true">1</span>
-          <span class="theme-option" aria-hidden="true">2</span>
-          <span class="theme-option" aria-hidden="true">3</span>
+        <div class="theme-switch__options" id="themeSwitch" role="switch">
+          <span class="theme-option" aria-hidden="true" id="first-theme">1</span>
+          <span class="theme-option" aria-hidden="true" id="second-theme">2</span>
+          <span class="theme-option" aria-hidden="true" id="three-theme">3</span>
 
           <!-- toggle (círculo) -->
-          <div class="theme-switch__toggle position-absolute">
+          <div class="theme-switch__toggle">
             <span class="theme-switch__circle" id="themeCircle"></span>
           </div>
         </div>
@@ -51,23 +51,23 @@
         <button onclick="insert('4')">4</button>
         <button onclick="insert('5')">5</button>
         <button onclick="insert('6')">6</button>
-        <button onclick="insert('+')">+</button>
+        <button onclick="insertOperation('+')">+</button>
 
         <button onclick="insert('1')">1</button>
         <button onclick="insert('2')">2</button>
         <button onclick="insert('3')">3</button>
-        <button onclick="insert('-')">-</button>
+        <button onclick="insertOperation('-')">-</button>
 
         <button>.</button>
         <button onclick="insert('0')">0</button>
-        <button onclick="insert('/')">/</button>
-        <button onclick="insert('x')">x</button>
+        <button onclick="insertOperation('/')">/</button>
+        <button onclick="insertOperation('x')">x</button>
 
         <button class="key-reset" onclick="resetCalc()">RESET</button>
         <button class="key-equal" onclick="calculate()">=</button>
       </div>
     </section>
   </main>
-  <script src="js/scripts.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
