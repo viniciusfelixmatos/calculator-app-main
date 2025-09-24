@@ -1,79 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- BOOTSTRAP -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/styles.css">
+  <title>Calculadora</title>
   <!-- GOOGLE FONTS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-    rel="stylesheet">
-  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
+<body class="theme-1">
+  <main class="calculator">
+    <!-- Cabeçalho -->
+    <header class="calculator__header d-flex justify-content-between align-items-center px-3 py-2">
+      <h1 class="calculator__title m-0">calc</h1>
 
-<body>
-  <main>
-    <section class="calc">
-      <div class="calc__area container-xl">
-        <div class="calc__box">
-          <!-- Topo da calculadora -->
-          <div class="calc__theme">
-            <p>calc</p>
-            <div class="switch__theme">
-              <p>theme</p>
-              <div class="switch__box">
-                <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
-                  <label class="form-check-label" for="flexSwitchCheckChecked"></label>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="theme-switch d-flex align-items-center gap-3 position-relative">
+        <span class="theme-switch__label">THEME</span>
 
-          <div class="calc__input">
-            <input class="input__result" id="inputout">
-          </div>
-          <div class="calc__buttons">
-            <div class="button__area">
-              <a class="button__number"><span>7</span></a>
-              <a class="button__number" value="8"><span>8</span></a>
-              <a class="button__number" value="9"><span>9</span></a>
-              <a class=" del__button" onclick="clearlastdigit()"><span>DEL</span></a>
-            </div>
-            <div class="button__area">
-              <a class="button__number" value="4"><span>4</span></a>
-              <a class="button__number" value="5"><span>5</span></a>
-              <a class="button__number" value="6"><span>6</span></a>
-              <a class=" button__operation" id="operationSum" value="+"><span>+</span></a>
-            </div>
-            <div class="button__area">
-              <a class="button__number" value="1"><span>1</span></a>
-              <a class="button__number" value="2"><span>2</span></a>
-              <a class="button__number" value="3"><span>3</span></a>
-              <a class=" " value="-"><span>-</span></a>
-            </div>
-            <div class="button__area">
-              <a class="" value="."><span>.</span></a>
-              <a class="button__number" value="0"><span>0</span></a>
-              <a class=" button__operation" value="/"><span>/</span></a>
-              <a class=" button__operation" value="x"><span>x</span></a>
-            </div>
-            <div class="button__area">
-              <a class=" large reset__button" onclick="clearoperation()"><span>RESET</span></a>
-              <a class=" large igual__button" onclick="handleoperation()"><span>=</span></a>
-            </div>
+        <!-- área clicável do switch -->
+        <div class="theme-switch__options d-flex justify-content-between position-relative" id="themeSwitch" role="switch" aria-label="Theme switch" tabindex="0">
+          <span class="theme-option" aria-hidden="true">1</span>
+          <span class="theme-option" aria-hidden="true">2</span>
+          <span class="theme-option" aria-hidden="true">3</span>
+
+          <!-- toggle (círculo) -->
+          <div class="theme-switch__toggle position-absolute">
+            <span class="theme-switch__circle" id="themeCircle"></span>
           </div>
         </div>
       </div>
+    </header>
+
+
+    <!-- Tela -->
+    <section class="calculator__screen">
+      <output class="calculator__output" id="result"></output>
+    </section>
+
+
+    <!-- Teclado -->
+    <section class="calculator__keys">
+      <div class="keys-grid">
+        <button onclick="insert('7')">7</button>
+        <button onclick="insert('8')">8</button>
+        <button onclick="insert('9')">9</button>
+        <button class="key-func" onclick="del()">DEL</button>
+
+        <button onclick="insert('4')">4</button>
+        <button onclick="insert('5')">5</button>
+        <button onclick="insert('6')">6</button>
+        <button onclick="insert('+')">+</button>
+
+        <button onclick="insert('1')">1</button>
+        <button onclick="insert('2')">2</button>
+        <button onclick="insert('3')">3</button>
+        <button onclick="insert('-')">-</button>
+
+        <button>.</button>
+        <button onclick="insert('0')">0</button>
+        <button onclick="insert('/')">/</button>
+        <button onclick="insert('x')">x</button>
+
+        <button class="key-reset" onclick="resetCalc()">RESET</button>
+        <button class="key-equal" onclick="calculate()">=</button>
+      </div>
     </section>
   </main>
-  <script src="js/script.js"></script>
+  <script src="js/scripts.js"></script>
 </body>
-
 </html>
