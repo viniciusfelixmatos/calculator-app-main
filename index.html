@@ -38,7 +38,6 @@
       <output class="calculator__output" id="result"></output>
     </section>
 
-
     <!-- Teclado -->
     <section class="calculator__keys">
       <div class="keys-grid">
@@ -50,17 +49,17 @@
         <button onclick="insert('4')">4</button>
         <button onclick="insert('5')">5</button>
         <button onclick="insert('6')">6</button>
-        <button onclick="insertOperation('+')">+</button>
+        <button onclick="insertOperation('+')" id="operation">+</button>
 
         <button onclick="insert('1')">1</button>
         <button onclick="insert('2')">2</button>
         <button onclick="insert('3')">3</button>
-        <button onclick="insertOperation('-')">-</button>
+        <button onclick="insertOperation('-')" id="operation">-</button>
 
-        <button>.</button>
+        <button onclick="insertOperation('.')">.</button>
         <button onclick="insert('0')">0</button>
-        <button onclick="insertOperation('/')">/</button>
-        <button onclick="insertOperation('x')">x</button>
+        <button onclick="insertOperation('/')" id="operation">/</button>
+        <button onclick="insertOperation('x')" id="operation">x</button>
 
         <button class="key-reset" onclick="resetCalc()">RESET</button>
         <button class="key-equal" onclick="calculate()">=</button>

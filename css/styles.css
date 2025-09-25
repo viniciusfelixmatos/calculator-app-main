@@ -82,6 +82,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 /* SWITCH */
@@ -135,6 +136,7 @@ body {
   border-radius: 0.5rem;
   text-align: right;
   min-height: 5.3125rem;
+  margin-bottom: 1.25rem;
 }
 
 .calculator__output {

@@ -1,47 +1,95 @@
 // SWITCH DE TEMAS
-const firstTheme = document.getElementById('first-theme');
-const secondTheme = document.getElementById('second-theme');
-const threeTheme = document.getElementById('three-theme');
 const switchContainer = document.getElementById('themeSwitch');
 const body = document.body;
 
 const themes = ['theme-1', 'theme-2', 'theme-3'];
 const stages = ['stage-0', 'stage-1', 'stage-2'];
 
-let currentIndex = 0; // 0 = primeiro tema
+let currentIndex = 0;
 
 function setTheme(index) {
-    // Atualiza tema do body
+    
     body.classList.remove(...themes);
     body.classList.add(themes[index]);
 
-    // Atualiza posição da bolinha
+    
     switchContainer.classList.remove(...stages);
     switchContainer.classList.add(stages[index]);
 
     currentIndex = index;
 }
 
-// Clicar no container cicla para o próximo tema
+
 switchContainer.addEventListener('click', () => {
     setTheme((currentIndex + 1) % 3);
 });
 
-// Clicar nos números vai direto para o tema correspondente
-firstTheme.addEventListener('click', () => setTheme(0));
-secondTheme.addEventListener('click', () => setTheme(1));
-threeTheme.addEventListener('click', () => setTheme(2));
-
-// Inicializa
 setTheme(currentIndex);
 
-// CÓDIGO DA CALCULADORA (sem alterações)
 const display = document.getElementById('result');
-let currentInput = '';
+let currentInput = 0;
 let currentOperator = '';
 let previousInput = '';
 
 function insert(number) {
     currentInput += number;
     display.value = `${currentInput} ${currentOperator} ${previousInput}`;
+}
+
+
+// Função de Inserior operações
+function insertOperation(Operation) {
+
+    // Condição, se for vázio retorne nada, se no previous tiver algo diferente realize a função de calculo
+    if (currentInput === '') return;
+    if (previousInput !== '') {
+        calculate();
+    }
+
+    currentOperator = Operation;
+    previousInput = currentInput;
+    currentInput = '';
+
+    display.value = `${currentOperator} ${previousInput}`;
+}
+
+function calculate() {
+    if (currentInput === '' || previousInput === '') {
+        return;
+    }
+
+    let result;
+    let current = parseFloat(currentInput);
+    let previous = parseFloat(previousInput);
+
+    switch (currentOperator) {
+        case '+':
+            result = previous + current;
+            break;
+        case '-':
+            result = previous - current;
+            break;
+        case '.' || 'x':
+            result = previous * current;
+            break;
+        case '/':
+            result = previous / current;
+            break;
+        default:
+            return;
+    }
+
+    currentInput = result.toString();
+    currentOperator = '';
+    previousInput = '';
+
+    display.value = currentInput;
+
+}
+
+function resetCalc() {
+    previousInput = '';
+    currentOperator = '';
+    currentInput = '';
+    display.value = '';
 }
