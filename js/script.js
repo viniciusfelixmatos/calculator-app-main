@@ -27,13 +27,13 @@ switchContainer.addEventListener('click', () => {
 setTheme(currentIndex);
 
 const display = document.getElementById('result');
-let currentInput = 0;
+let currentInput = '';
 let currentOperator = '';
 let previousInput = '';
 
 function insert(number) {
     currentInput += number;
-    display.value = `${currentInput} ${currentOperator} ${previousInput}`;
+    display.value = `${previousInput} ${currentOperator} ${currentInput}`;
 }
 
 
@@ -50,7 +50,7 @@ function insertOperation(Operation) {
     previousInput = currentInput;
     currentInput = '';
 
-    display.value = `${currentOperator} ${previousInput}`;
+    display.value = `${previousInput} ${currentOperator}`;
 }
 
 function calculate() {
@@ -86,6 +86,21 @@ function calculate() {
     display.value = currentInput;
 
 }
+
+function del() {
+
+    let currentNum = currentInput;
+    console.log(currentNum);
+
+    if( currentNum.length > 0 ) {
+        currentNum = currentNum.slice(0, -1);
+    }
+
+    display.value = currentNum;
+    console.log(currentNum)
+
+}
+
 
 function resetCalc() {
     previousInput = '';

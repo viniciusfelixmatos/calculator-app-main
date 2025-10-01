@@ -37,6 +37,7 @@ body.theme-2 {
   --key-shadow-orange: hsl(35, 11%, 61%);
 
   --text-dark-blue: hsl(60, 10%, 19%);
+  --text-white-header: hsl(268, 71%, 12%);
   --text-white: hsl(0, 0%, 100%);
 }
 
@@ -83,6 +84,14 @@ body {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
+  color: var(--text-white-header);
+}
+
+.calc__title-container {
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 3px;
+  min-height: 70px;
 }
 
 /* SWITCH */
@@ -100,6 +109,25 @@ body {
   user-select: none;
 }
 
+.theme-switch__area {
+  display: flex;
+  align-items: normal;
+  justify-content: flex-end;
+  flex-direction: column;
+  min-height: 70px;
+}
+
+.theme_num {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 0.3125rem;
+}
+
+.theme_num span {
+  color: var(--text-white-header);
+  font-weight: bold;
+}
+
 .theme-option {
   z-index: 2;
   pointer-events: none;
@@ -110,6 +138,19 @@ body {
 .theme-switch {
   display: flex;
   align-items: center;
+}
+
+.theme-switch__label {
+  display: flex;
+  min-height: 4.375rem;
+  padding-bottom: 0.625rem;
+  min-width: 4.375rem;
+  align-items: flex-end;
+}
+
+.theme-switch__label span{
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .theme-switch__circle {
@@ -134,9 +175,10 @@ body {
   background-color: var(--screen-bg);
   padding: 1.5rem;
   border-radius: 0.5rem;
-  text-align: right;
+  text-align: left;
   min-height: 5.3125rem;
   margin-bottom: 1.25rem;
+  color: var(--text-white-header);
 }
 
 .calculator__output {

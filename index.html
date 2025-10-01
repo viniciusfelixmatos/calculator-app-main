@@ -14,20 +14,26 @@
   <main class="calculator">
     <!-- Cabeçalho -->
     <header class="calculator__header px-3 py-2">
-      <h1 class="calculator__title m-0">calc</h1>
+      <div class="calc__title-container">
+        <h1 class="calculator__title m-0">calc</h1>
+      </div>
 
       <div class="theme-switch gap-3">
-        <span class="theme-switch__label">THEME</span>
-
+        <div class="theme-switch__label">
+          <span>THEME</span>
+        </div>
         <!-- área clicável do switch -->
-        <div class="theme-switch__options" id="themeSwitch" role="switch">
-          <span class="theme-option">1</span>
-          <span class="theme-option">2</span>
-          <span class="theme-option">3</span>
-
-          <!-- toggle (círculo) -->
-          <div class="theme-switch__toggle">
-            <span class="theme-switch__circle" id="themeCircle"></span>
+        <div class="theme-switch__area">
+          <div class="theme_num">
+            <span class="theme-option">1</span>
+            <span class="theme-option">2</span>
+            <span class="theme-option">3</span>
+          </div>
+          <div class="theme-switch__options" id="themeSwitch" role="switch">
+            <!-- toggle (círculo) -->
+            <div class="theme-switch__toggle">
+              <span class="theme-switch__circle" id="themeCircle"></span>
+            </div>
           </div>
         </div>
       </div>
