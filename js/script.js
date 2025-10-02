@@ -26,31 +26,53 @@ switchContainer.addEventListener('click', () => {
 
 setTheme(currentIndex);
 
+// CALCULADORA
+
 const display = document.getElementById('result');
 let currentInput = '';
 let currentOperator = '';
 let previousInput = '';
 
-function insert(number) {
-    currentInput += number;
-    display.value = `${previousInput} ${currentOperator} ${currentInput}`;
+// Função auxiliar para atualizar o display
+function updateDisplay() {
+    let displayText = '';
+    
+    if (previousInput !== '') {
+        displayText += previousInput;
+    }
+    
+    if (currentOperator !== '') {
+        displayText += ` ${currentOperator}`;
+    }
+    
+    if (currentInput !== '') {
+        displayText += ` ${currentInput}`;
+    }
+    
+    display.value = displayText.trim();
 }
 
+function insert(number) {
+    currentInput += number; 
+    updateDisplay();
+}
 
-// Função de Inserior operações
-function insertOperation(Operation) {
+// Função de Inserir operações
+function insertOperation(operation) {
+    // Permitir operador se houver currentInput OU previousInput
+    if (currentInput === '' && previousInput === '') return;
 
-    // Condição, se for vázio retorne nada, se no previous tiver algo diferente realize a função de calculo
-    if (currentInput === '') return;
-    if (previousInput !== '') {
+    if (currentInput !== '' && previousInput !== '') {
         calculate();
     }
 
-    currentOperator = Operation;
-    previousInput = currentInput;
-    currentInput = '';
+    if (currentInput !== '') {
+        previousInput = currentInput;
+        currentInput = '';
+    }
 
-    display.value = `${previousInput} ${currentOperator}`;
+    currentOperator = operation;
+    updateDisplay();
 }
 
 function calculate() {
@@ -69,10 +91,15 @@ function calculate() {
         case '-':
             result = previous - current;
             break;
-        case '.' || 'x':
+        case 'x':
             result = previous * current;
             break;
         case '/':
+            if (current === 0) {
+                display.value = 'Error';
+                resetCalc();
+                return;
+            }
             result = previous / current;
             break;
         default:
@@ -83,24 +110,24 @@ function calculate() {
     currentOperator = '';
     previousInput = '';
 
-    display.value = currentInput;
-
+    updateDisplay();
 }
 
 function del() {
-
-    let currentNum = currentInput;
-    console.log(currentNum);
-
-    if( currentNum.length > 0 ) {
-        currentNum = currentNum.slice(0, -1);
+    if (currentInput.length > 0) {
+        // Apaga número atual
+        currentInput = currentInput.slice(0, -1);
+    } else if (currentOperator !== '') {
+        // Se não tem número atual, apaga operador
+        currentOperator = '';
+    } else if (previousInput.length > 0) {
+        // Se não tem número nem operador, apaga número anterior
+        previousInput = previousInput.slice(0, -1);
     }
 
-    display.value = currentNum;
-    console.log(currentNum)
-
+    // Atualiza display
+    updateDisplay();
 }
-
 
 function resetCalc() {
     previousInput = '';
