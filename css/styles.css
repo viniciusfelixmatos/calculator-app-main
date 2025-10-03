@@ -116,7 +116,7 @@ body {
   align-items: normal;
   justify-content: flex-end;
   flex-direction: column;
-  min-height: 70px;
+  min-height: 4.375rem;
 }
 
 .theme_num {
