@@ -59,7 +59,7 @@ function insert(number) {
 
 // Função de Inserir operações
 function insertOperation(operation) {
-    // Permitir operador se houver currentInput OU previousInput
+    // Permitir operador se houver currentInput ou previousInput
     if (currentInput === '' && previousInput === '') return;
 
     if (currentInput !== '' && previousInput !== '') {
