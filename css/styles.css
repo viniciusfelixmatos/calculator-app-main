@@ -243,9 +243,3 @@ button:active {
   color: var(--text-white);
   box-shadow: 0 4px var(--key-shadow-red);
 }
-
-/* Second Theme */
-
-.body.second-theme {
-  background-color: var(--Light-gray) !important;
-}
